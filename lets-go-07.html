@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title itemprop="name">Let's Go 7 — 数组与切片 - 真白的年轮面包</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="golang">
+
+        <meta name="robots" content="none">
+    <meta name="generator" content="Halo 1.5.4">
+        <link rel="shortcut icon" type="images/x-icon" href="https://i.loli.net/2020/08/21/zYQoZvxB6eclsR5.png">
+    
+        
+	<link rel='stylesheet' href='static/css/style.min.css' type='text/css' media='all'>
+	<link rel="stylesheet" href="static/css/css.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/font_2010950_sh9o0r7ahar.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/lib.css" media="noexist" onload="this.media='all'">
+	<link rel='stylesheet' href="static/css/highlight-Dracula.css" type="text/css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/jqcloud.min.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/justifiedGallery.min.css" media="noexist" onload="this.media='all'">
+<style type="text/css"> .site-top .lower nav { display: block !important; } /** * 图片资源 */ .video-play, .loadvideo { background-image: url(static/image/play@32x32.png) } .video-pause { background-image: url(static/image/pause@32x32.png) } #video-add { background-image: url(static/image/add@32x32.png); } #loading-comments { background-image: url(static/image/disqus-preloader.svg); } .headertop.filter-grid:before { background-image: url(static/image/grid.png) } .headertop.filter-dot:before { background-image: url(static/image/dot.gif) } @media (max-width:860px) { .headertop.filter-dot:before { background-image: url(static/image/grid.png) } } .search-form.is-visible { background-image: url(static/image/iloli.gif); } #pagination .loading, #journals-pagination .loading { background-image: url(static/image/rotating-ball-o.svg); } #banner_wave_1 { background-image: url(static/image/wave1.png) repeat-x; } #banner_wave_2 { background-image: url(static/image/wave2.png) repeat-x; } /** 鼠标样式 */ a { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/ayuda.cur), auto } a:active { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/work.cur),alias } p { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/texto.cur),auto } body { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/normal.cur),auto; } .cd-top { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/No_Disponible.cur),auto; } .botui-actions-buttons-button { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/No_Disponible.cur),auto; } .button.botui-actions-buttons-button { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/No_Disponible.cur),auto; } .highlight-wrap code { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/texto.cur),auto } .cd-top { background: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.1.3/img/Sakura/images/scroll.png) no-repeat center; } .author-profile i, .post-like a, .post-share .show-share, .sub-text, .we-info a, span.sitename, .post-more i:hover, #pagination a:hover, .post-content a:hover, .float-content i:hover { color: #fe9600 } .feature i, .feature-title span, .download, .navigator i:hover, .links ul li:before, .ar-time i, span.ar-circle, .object, .comment .comment-reply-link, .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after { background: #fe9600 } ::-webkit-scrollbar-thumb { background: #fe9600 } .download, .navigator i:hover, .link-title, .links ul li:hover, #pagination a:hover, .comment-respond input[type='submit']:hover { border-color: #fe9600 } .entry-content a:hover, .site-info a:hover, .comment h4 a, #comments-navi a.prev, #comments-navi a.next, .comment h4 a:hover, .site-top ul li a:hover, .entry-title a:hover, #archives-temp h3, span.page-numbers.current, .sorry li a:hover, .site-title a:hover, i.iconfont.js-toggle-search.iconsearch:hover, .comment-respond input[type='submit']:hover { color: #fe9600 } #nprogress .bar { background: #fe9600 } #nprogress .peg { box-shadow: 0 0 10px #fe9600, 0 0 5px #fe9600; } #pagination a:hover { border: 1px solid #fe9600; } #pagination a:hover { -webkit-box-shadow: 0 0 4px #fe9600; -moz-box-shadow: 0 0 4px #fe9600; -o-box-shadow: 0 0 4px #fe9600; box-shadow: 0 0 4px #fe9600 } .entry-content a:after { background-color: #fe9600 } .site-top ul li a:after { background-color: #fe9600 } .post-tags a:hover { color: #fe9600 } blockquote:before { color: #fe9600; } blockquote:after { color: #fe9600; } @media (max-width: 860px) { #mo-nav ul li a:hover { color: #fe9600; } } @media (min-width: 860px) { .chip-container { margin-top: -60px;; } } #gallery-filter { text-align: center; } .masonry-gallery .gallery-item { margin-bottom: 10px } /** 日志 */ .journals-line>li:nth-child(odd) .journal-label:after { border-right-color: #e6e6fa; } .at_button { background-color: #e6e6fa; color: #ffffff; } .at_button:hover { background: #f0ffff; color: #ffffff; } .journals-line>li:nth-child(odd) .journal-label { background: linear-gradient(60deg,rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover, url(https://i.loli.net/2021/11/16/ycwC4MGToI5ngHl.jpg) 0% 0% / cover; color: #ffffff; } .journals-line>li .journal-label { background: linear-gradient(60deg,rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover, url(https://i.loli.net/2021/11/16/ycwC4MGToI5ngHl.jpg) 0% 0% / cover; color: #ffffff; } /*黑夜模式控件透明度*/ body.dark .header-info, body.dark .top-social img { color:#fff; background:rgba(0,0,0,0.7); } body.dark .notification, body.dark .the-feature.from_left_and_right .info { background-color: rgba(0,0,0,0.7); } body.dark .skin-menu, body.dark .m-cd-top { background-color:rgba(0,0,0,0.7) !important; } /*黑夜模式图像亮度*/ body.dark img, body.dark .highlight-wrap, body.dark iframe, body.dark .entry-content .aplayer { filter:brightness(0.7); } /*黑夜模式主题色*/ body.dark .ar-time i, body.dark span.ar-circle, body.dark .scrollbar, body.dark .butterBar-message, body.dark .aplayer .aplayer-list ol li:hover { background: #fe9600 !important; } body.dark .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur, body.dark .user-menu-option a:hover , body.dark .menu-list li:hover , body.dark .font-family-controls button:hover , body.dark .openNav .icon, body.dark .openNav .icon:before , body.dark .openNav .icon:after , body.dark .openNav .icon:after , body.dark .site-top ul li a:after { background-color: #fe9600; } body.dark #archives-temp h3, body.dark #moblieGoTop, body.dark #changskin, body.dark .the-feature.from_left_and_right a:hover .info p, body.dark .the-feature.from_left_and_right .info, body.dark .ins-section .ins-search-item:hover, body.dark .ins-section .ins-search-item:hover .ins-slug, body.dark .ins-section .ins-search-item:hover .ins-search-preview, body.dark .ins-section .ins-search-item:hover .iconfont , body.dark .float-content i:hover, body.dark .menhera-container .emoji-item:hover , body.dark .comment-respond .logged-in-as a:hover , body.dark .site-top ul li a:hover , body.dark i.iconfont.js-toggle-search.iconsearch:hover { color: #fe9600; } body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path { fill: #fe9600 } body.dark #moblieGoTop:hover , body.dark #changskin:hover { color: #fe9600; opacity:.8; } body.dark .focusinfo .header-tou img { box-shadow: inset 0 0 10px #fe9600; } </style> <!-- 评论模块独立样式 --> <style id="comment-style" type="text/css" media="noexist"> .halo-comment.dark button, .halo-comment.dark input, .halo-comment.dark select, .halo-comment.dark textarea, .halo-comment.dark i.iconfont.js-toggle-search.iconsearch, .halo-comment.dark .comment-textarea .input-label, .halo-comment.dark #emotion-toggle span, .halo-comment.dark .emotion-box, .halo-comment.dark .emotion-box .motion-container .emoji-item { color: #eee !important; } .halo-comment.dark .body p { color: #bebebe !important; } .halo-comment.dark input[type=color]:focus, .halo-comment.dark input[type=date]:focus, .halo-comment.dark input[type=datetime-local]:focus, .halo-comment.dark input[type=datetime]:focus, .halo-comment.dark input[type=email]:focus, .halo-comment.dark input[type=month]:focus, .halo-comment.dark input[type=number]:focus, .halo-comment.dark input[type=password]:focus, .halo-comment.dark input[type=range]:focus, .halo-comment.dark input[type=search]:focus, .halo-comment.dark input[type=tel]:focus, .halo-comment.dark input[type=text]:focus, .halo-comment.dark input[type=time]:focus, .halo-comment.dark input[type=url]:focus, .halo-comment.dark input[type=week]:focus, .halo-comment.dark textarea:focus { color: #eee !important; background-color: #31363b !important; } .halo-comment.dark .comment .info, .halo-comment.dark .comment .comment-time, .halo-comment.dark .comment-respond .logged-in-as, .halo-comment.dark .notification, .halo-comment.dark .comment-respond .logged-in-as a { color: #9499a8; } /** 说说评论样式 */ .halo-comment.journal { max-height: 600px; overflow: auto; } </style>	<script type="text/javascript">
+		if (!!window.ActiveXObject || "ActiveXObject" in window) {
+			alert('请抛弃万恶的IE系列浏览器吧。');
+		}
+	</script>
+</head>
+<body class="hfeed chinese-font serif">
+<section id="main-container">
+		<div class="headertop filter-dim">
+<figure id="centerbg" class="centerbg" style="background-image: url(
+		static/image/XG5bOgFJek6v2NH.jpg
+	);
+">
+	<div class="focusinfo">
+			<h1 class="center-text glitch" data-text="Shiina Mashiro">Shiina Mashiro</h1>
+		<div class="header-info no-select
+			 info-desc"><p><i class="fa fa-quote-left"></i><span class="desc"> 此 生 无 悔 恋 真 白 ，来 世 愿 入 樱 花 庄 。</span><i class="fa fa-quote-right"></i></p>
+			<div class="top-social_v2">
+			    <li id="bg-pre">
+            		<img class="flipx" src="static/picture/next-b.svg">
+          		</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="social-github i18n" data-iname="icon_alt.github" data-iattr="title">
+						<img src="static/picture/github.png">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="social-bili i18n" data-iname="icon_alt.bili" data-iattr="title">
+						<img src="static/picture/bilibili.png">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="i18n" data-iname="icon_alt.twitter" data-iattr="title">
+						<img src="static/picture/twitter.png">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="i18n" data-iname="icon_alt.stackoverflow" data-iattr="title">
+						<img src="static/picture/stackoverflow.svg">
+					</a>
+				</li>
+
+
+				<li id="bg-next">
+            		<img src="static/picture/next-b.svg">
+          		</li>
+			</div>
+		</div>
+	</div>
+</figure>
+		<!-- 背景视频 -->
+<div id="video-container">
+    <video id="bgvideo" class="video" data-id="" data-server="bilibili" data-url="/sakurasou.flv" width="auto" preload="auto" data-cid="" data-qn="64" data-vtype="0"></video>
+    <div id="video-btn" class="loadvideo videolive"></div>
+    <div id="video-add"></div>
+    <div class="video-stu"></div>
+</div>		<!-- 首页下拉箭头 -->
+			<div class="headertop-down faa-float animated" onclick="headertop_down()">
+				<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+			</div>
+		</div>
+	<div id="page" class="site wrapper">
+<style>
+    /** Post start */
+        /** 文章页面导航栏自动收缩 */
+        .yya:not(.sabit) {
+            top: -100px;
+            transition: all .4s ease;
+        }
+
+        .sabit {
+            transition: all .4s ease;
+        }
+
+        /** 文章页首行缩进 */
+    /** Post end */
+</style>		<header class="site-header  " role="banner">
+			<div class="site-top">
+				<div class="site-branding">
+						<div class="site-title">
+							<a href="index.html">
+								<img src="static/picture/VByUkvYofXhMP2H.png">
+							</a>
+						</div>
+				</div><!-- .site-branding -->
+				<div class="header-user-avatar">
+					<img src="static/picture/avatar.jpg" width="30" height="30">
+					<div class="header-user-menu">
+						<div class="herder-user-name">
+							<div class="herder-user-name-u">Parasomnia</div>
+						</div>
+					</div>
+				</div>
+				<div class="searchbox"><i class="iconfont js-toggle-search iconsearch icon-search"></i></div>
+				<div class="lower-cantiner">
+					<div class="lower">
+						<nav class="navbar">
+<ul id="menu-menu-1" class="menu">
+				<li>
+				<a href="index.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-fort-awesome faa-tada" aria-hidden="true"></i>
+                        首页
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="archives.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-archive faa-tada" aria-hidden="true"></i>
+                        归档
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="categories.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-folder-open faa-tada" aria-hidden="true"></i>
+                        分类
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="tags.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-tags faa-tada" aria-hidden="true"></i>
+                        标签
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="journals.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-calendar-o  faa-tada" aria-hidden="true"></i>
+                        足迹
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="board.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-pencil faa-tada" aria-hidden="true"></i>
+                        留言
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="links.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-link faa-shake" aria-hidden="true"></i>
+                        友链
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="about.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-leaf faa-tada" aria-hidden="true"></i>
+                        关于
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="javascript:;" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-rss faa-tada" aria-hidden="true"></i>
+                        订阅
+                    </span>
+				</a>
+			</li>
+
+</ul>						</nav>
+						<!-- #site-navigation -->
+					</div>
+				</div>
+			</div>
+		</header><!-- #masthead -->
+        <div class="pattern-center-blank"></div>
+        <div class="pattern-center single-center no-select">
+            <div class="pattern-attachment-img">
+                <img class="lazyload" data-src="static/image/gPwDKkpz2qb8fxu.png" src="static/picture/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
+            </div>
+            <header class="pattern-header single-header">
+                <h1 class="entry-title">Let's Go 7 — 数组与切片</h1>
+                <p class="entry-census">
+                    <span>
+                        <a href="index.html">
+                            <img src="static/picture/avatar.jpg">
+                        </a>
+                    </span>
+                    <span>
+                        <a href="index.html">Parasomnia</a>
+                    </span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.time" data-ivalue="2020-06-22"></span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.edit_time" data-ivalue="2020-09-21"></span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.visits" data-ivalue="543"></span>
+                </p>
+            </header>
+        </div>
+		<div id="content" class="site-content">
+<div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+<article id="post-42">
+    <div class="toc-container">
+        <div class="toc"></div>
+    </div>
+    <div class="entry-content">
+        <h1 id="数组">数组</h1>
+<p>和以往认知的数组有很大不同。</p>
+<ul>
+<li>数组是值类型，赋值和传参会复制整个数组，而不是指针。</li>
+<li>数组长度必须是常量，且是类型的组成部分。<code>[2]int</code> 和 <code>[3]int</code> 是不同类型。</li>
+<li>支持 &quot;==&quot;、&quot;!=&quot; 操作符，因为内存总是被初始化过的。（因为是值类型，所以如果两个数组内元素顺序和值相同，则两个数组相同）</li>
+<li>指针数组 <code>[n]*T</code>，数组指针 <code>*[n]T</code>。</li>
+</ul>
+<pre><code class="language-go">a := [3]int{1,2,3}
+b := [3]int{1,2,3}
+fmt.Printf(&quot;%p %p\n&quot;,&amp;a,&amp;b)//0xc00000e380 0xc00000e3a0 地址位置不同
+fmt.Println(a==b)//true
+</code></pre>
+<h2 id="数组初始化">数组初始化</h2>
+<pre><code class="language-go">a := [3]int{1, 2} // 未初始化元素值为 0。
+b := [...]int{1, 2, 3, 4} // 通过初始化值确定数组长度。
+c := [5]int{2: 100, 4:200} // 使用索引号初始化元素。
+
+//使用符合语句初始化匿名结构体数组
+d := [...]struct {
+	name string
+	age uint8
+}{
+	{&quot;user1&quot;, 10}, // 可省略元素类型。
+	{&quot;user2&quot;, 20}, // 别忘了最后一行的逗号。
+}
+</code></pre>
+<h3 id="多维数组初始化">多维数组初始化</h3>
+<pre><code class="language-go">a := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+b := [...][2]int{{1, 1}, {2, 2}, {3, 3}} // 第 2 纬度不能用 &quot;...&quot;。
+</code></pre>
+<h2 id="数组是值类型">数组是值类型！</h2>
+<p><strong>值拷贝行为会造成性能问题，通常会建议使用 <code>slice</code>，或数组指针。</strong></p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func test(x [2]int) {
+	fmt.Printf(&quot;x: %p\n&quot;, &amp;x)
+	x[1] = 1000
+}
+
+func main() {
+	a := [2]int{}
+	fmt.Printf(&quot;a: %p\n&quot;, &amp;a) //a: 0xc000018040
+
+	test(a) //x: 0xc000018060 传入的是原数组的拷贝，而非之前的数组
+	fmt.Println(a) //[0 0]
+}
+</code></pre>
+<p>内置函数 <code>len</code> 和 <code>cap</code> 都返回数组长度 (元素数量)。</p>
+<h1 id="切片">切片</h1>
+<p>需要说明，<code>slice</code> 并不是数组或数组指针。它通过内部指针和相关属性引用数组片段，以实现变长方案。</p>
+<pre><code class="language-plaintext">//slice内部结构
+struct Slice { // must not move anything
+	byte* array; // actual data
+	uintgo len; // number of elements
+	uintgo cap; // allocated number of elements
+};
+</code></pre>
+<p>切片的特点：</p>
+<ul>
+<li>引用类型。但自身是结构体，值拷贝传递。</li>
+<li>属性 <code>len</code> 表示可用元素数量，读写操作不能超过该限制。</li>
+<li>属性 <code>cap</code> 表示最大扩张容量，不能超出数组限制。</li>
+<li>如果 <code>slice == nil</code>，那么 <code>len</code>、<code>cap</code> 结果都等于 <code>0</code>。</li>
+</ul>
+<h2 id="切片与数组的关系">切片与数组的关系</h2>
+<p>data := [...]int{0, 1, 2, 3, 4, 5, 6}<br>
+slice := data[1:4:5] // [low : high : max]</p>
+<p><img src="https://cdn.jsdelivr.net/gh/MuenYu/image-hosting@master/wp-content/uploads/2020/06/TIM%E6%88%AA%E5%9B%BE20200621224524.png" alt=""></p>
+<h2 id="通过数组创建切片">通过数组创建切片</h2>
+<p>使用语法 <code>数组名[low:high:max]</code>来创建切片，规律如下：</p>
+<p>对于数组：<code>data := [...]int{0,1,2,3,4,5,6,7,8,9}</code></p>
+<table>
+<thead>
+<tr><th>切片表达式</th><th>切片内容</th><th>切片长度len</th><th>切片容量cap</th><th>备注</th></tr>
+</thead>
+<tbody>
+<tr><td>data[:6:8]</td><td>0 1 2 3 4 5</td><td>6</td><td>8</td><td>省略 low</td></tr>
+<tr><td>data[5:]</td><td>5 6 7 8 9</td><td>5</td><td>5</td><td>省略high、max</td></tr>
+<tr><td>data[:3]</td><td>0 1 2</td><td>3</td><td>10</td><td>省略low、max</td></tr>
+<tr><td>data[:]</td><td>0 1 2 3 4 5 6 7 8 9</td><td>10</td><td>10</td><td>全部省略</td></tr>
+</tbody>
+</table>
+<pre><code class="language-go">	data := [...]int{1,2,3,4,5}
+	s1 := data[:]
+	data[2] = 100
+	fmt.Println(s1) //[1 2 100 4 5]
+</code></pre>
+<p>可见使用这种方法创建的切片的数据数组就是原数组</p>
+<p>其实这种方法实际使用不多</p>
+<h2 id="reslice用切片创建切片">reslice，用切片创建切片</h2>
+<p>这种方法在代码上和上一种很相似</p>
+<p>所谓 <code>reslice</code>，是基于已有 <code>slice</code> 创建新 <code>slice</code> 对象，以便在 <code>cap</code> 允许范围内调整属性。</p>
+<pre><code class="language-go">s := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+s1 := s[2:5] // [2 3 4]
+s2 := s1[2:6:7] // [4 5 6 7]
+s3 := s2[3:6] // Error
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/MuenYu/image-hosting@master/wp-content/uploads/2020/06/slice2.png" alt=""></p>
+<p>新对象依旧指向原底层数组。</p>
+<pre><code class="language-go">s := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+s1 := s[2:5] // [2 3 4]
+s1[2] = 100
+
+s2 := s1[2:6] // [100 5 6 7]
+s2[3] = 200
+
+fmt.Println(s) //[0 1 2 3 100 5 6 200 8 9]
+</code></pre>
+<h2 id="直接创建切片">直接创建切片</h2>
+<p>直接创建 <code>slice</code> 对象，自动分配底层数组。</p>
+<pre><code class="language-go">s1 := []int{0, 1, 2, 3, 8: 100} // 通过初始化表达式构造，可使用索引号。
+
+s2 := make([]int, 6, 8) // 使用 make 创建，指定 len 和 cap 值。
+
+s3 := make([]int, 6) // 省略 cap，相当于 cap = len。
+</code></pre>
+<p>使用 <code>make</code> 动态创建 <code>slice</code>，避免了数组必须用常量做长度的麻烦，在实际使用中，这种创建切片的方式更为常用</p>
+<h2 id="切片的读写操作">切片的读写操作</h2>
+<p>和使用数组一样，但需要<strong>注意索引号的差别</strong>，即切片和数组的下标是相互独立的</p>
+<pre><code class="language-go">data := [...]int{0, 1, 2, 3, 4, 5}
+
+s := data[2:4] // {2,3,4}
+s[0] += 100 // {102,3,4}
+s[1] += 200 // {102,203,4}
+
+fmt.Println(s) // {102,203,4}
+fmt.Println(data) // {0,1,102,203,4,5}
+</code></pre>
+<p>当然也可以用指针直接访问底层数组</p>
+<pre><code class="language-go">s := []int{0, 1, 2, 3}
+
+p := &amp;s[2] // *int, 获取底层数组元素指针。
+*p += 100
+
+s[2] += 100 //也可以直接使用数组的方式操作
+</code></pre>
+<p>可直接修改 <code>struct array</code>/<code>slice</code> 成员。</p>
+<pre><code class="language-go">d := [5]struct {
+	x int
+}{}
+
+s := d[:]
+
+d[1].x = 10
+s[2].x = 20
+
+fmt.Println(d) // [{0} {10} {20} {0} {0}]
+fmt.Printf(&quot;%p, %p\n&quot;, &amp;d, &amp;d[0]) // 0x20819c180, 0x20819c180
+</code></pre>
+<h2 id="二多维切片">二(多)维切片</h2>
+<p>与多维数组一样 <code>[][]T</code>，是指元素类型为<code>[]T</code>的切片</p>
+<pre><code class="language-go">data := [][]int{
+	[]int{1, 2, 3},
+	[]int{100, 200},
+	[]int{11, 22, 33, 44},
+}
+</code></pre>
+<p>或者使用切片嵌套赋值的方式</p>
+<pre><code class="language-go">	multi := make([][]int,10)
+
+	for i := 1; i &lt; 10; i++ {
+		multi[i-1] = make([]int,10)
+		for j := 1; j &lt;= i; j++ {
+			multi[i-1][j-1] = i*j
+		}
+	}
+</code></pre>
+<h2 id="切片的常用方法">切片的常用方法</h2>
+<h3 id="append">append</h3>
+<pre><code class="language-go">func append(slice []Type, elems ...Type) []Type
+</code></pre>
+<p>向 <code>slice</code> 尾部添加数据，返回新的 <code>slice</code> 对象。</p>
+<pre><code class="language-go">s := make([]int, 0, 5)
+fmt.Printf(&quot;%p\n&quot;, &amp;s) //0x210230000
+
+s2 := append(s, 1)
+fmt.Printf(&quot;%p\n&quot;, &amp;s2) //0x210230040
+
+fmt.Println(s, s2) //[] [1]
+</code></pre>
+<p>说明append前后的两个切片不是同一个切片</p>
+<pre><code class="language-go">	//如果 cap 够用（此处cap为5，但只放入了5个元素）
+	s1 := make([]int, 0, 5)
+	s1 = append(s1,1)
+	fmt.Printf(&quot;%p\n&quot;, &amp;s1[0]) //0xc0000c8030
+
+	s2 := append(s1, 2)
+	fmt.Printf(&quot;%p\n&quot;, &amp;s2[0]) //0xc0000c8030
+
+	//如果 cap 不够用（此处cap为1，但放入了两个元素）
+	s1 := make([]int, 0, 1)
+	s1 = append(s1,1)
+	fmt.Printf(&quot;%p\n&quot;, &amp;s1[0])//0xc0000a0068
+
+	s2 := append(s1, 2)
+	fmt.Printf(&quot;%p\n&quot;, &amp;s2[0])//0xc0000a00a0
+</code></pre>
+<p>可见：</p>
+<p>​	如果cap够用，则append前后使用的是相同的数据数组</p>
+<p>​	如果cap不够用，则append前后使用不同的数据数组</p>
+<p><strong>注意：是否使用新的数据数组与数据数组容量无关，之和切片的cap有关</strong>，所以会出现即便数据数组没满但超过cap限制导致重新分配数据数组</p>
+<h4 id="最佳实践">最佳实践</h4>
+<p>通常以 <code>2</code> 倍容量重新分配底层数组。在大批量添加数据时，建议一次性分配足够大的空间，以减少内存分配和数据复制开销。或初始化足够长的 <code>len</code> 属性，改用索引号进行操作。及时释放不再使用的 <code>slice</code> 对象，避免持有过期数组，造成 <code>GC</code> 无法回收。</p>
+<pre><code class="language-go">s := make([]int, 0, 1)
+c := cap(s)
+
+for i := 0; i &lt; 50; i++ {
+	s = append(s, i)
+	if n := cap(s); n &gt; c {
+		fmt.Printf(&quot;cap: %d -&gt; %d\n&quot;, c, n)
+		c = n
+	}
+}
+/*
+输出：
+cap: 1 -&gt; 2
+cap: 2 -&gt; 4
+cap: 4 -&gt; 8
+cap: 8 -&gt; 16
+cap: 16 -&gt; 32
+cap: 32 -&gt; 64
+*/
+
+</code></pre>
+<h3 id="copy">copy</h3>
+<pre><code class="language-go">func copy(dst, src []Type) int
+</code></pre>
+<p>函数 <code>copy</code> 在两个 <code>slice</code> 间复制数据</p>
+<p>srcSlice，其中 srcSlice 为数据来源切片，destSlice 为复制的目标（也就是将 srcSlice 复制到 destSlice）</p>
+<p>复制长度以 <code>len</code> 小的为准，函数的返回值就是复制的长度。</p>
+<p>两个 <code>slice</code> 可指向同一底层数组，允许元素区间重叠。</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	data := [...]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+	s := data[8:] //[8 9] 
+	s2 := data[:5]// [0 1 2 3 4]
+
+    copyLen := copy(s2, s) // dst:s2, src:s 从s往s2复制，复制长度为2
+	
+    fmt.Println(copyLen) //2
+	fmt.Println(s)//[8 9]
+	fmt.Println(s2)//[8 9 2 3 4]
+	fmt.Println(data)//[8 9 2 3 4 5 6 7 8 9]
+}
+</code></pre>
+<h1 id="参考">参考</h1>
+<p><a href="javascript:;">go 边看边练</a></p>
+<p><a href="javascript:;">Go语言copy()：切片复制（切片拷贝）</a></p>
+
+        <p>Q.E.D. <i class="fa fa-meetup" aria-hidden="true" style="color:#d34836"></i></p>
+    </div><!-- .entry-content -->
+    <div class="single-reward">
+        <div class="reward-open"><span class="i18n" data-iname="post.reward"></span>
+            <div class="reward-main">
+                <ul class="reward-row">
+                        <li class="alipay-code"><img src="https://i.loli.net/2020/08/21/iotaKjFTfAsh6qE.jpg"></li>
+                        <li class="wechat-code"><img src="static/picture/HfcFv3kP18y4TGW.jpg"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="post-footer">
+        <div class="post-license">
+            <a href="javascript:;" target="_blank" rel="nofollow">
+                <i class="fa fa-creative-commons" aria-hidden="true"></i>
+                <span class="i18n" data-iname="post.creative_commons"></span>
+            </a>
+        </div>
+        <div class="post-tags">
+                <i class="iconfont icon-tags"></i>
+                    <a href="golang.html" rel="tag">golang</a>
+        </div>
+<style>
+.s-wechat {
+    position: relative;
+}
+
+.s-wechat .wechat-qrcode {
+	display: none;
+	border: 1px solid #eee;
+	position: absolute;
+	top: -215px;
+	left: -84px;
+	width: 200px;
+	height: 192px;
+	color: #666;
+	font-size: 12px;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0 2px 10px #aaa;
+	transition: all 200ms;
+	-webkit-tansition: all 350ms;
+	-moz-transition: all 350ms
+}
+
+.s-wechat .wechat-qrcode.bottom {
+	top: 40px;
+	left: -84px
+}
+
+.s-wechat .wechat-qrcode.bottom:after {
+	display: none
+}
+
+.s-wechat .wechat-qrcode h4 {
+	font-weight: normal;
+	height: 26px;
+	line-height: 26px;
+	font-size: 12px;
+	background-color: #f3f3f3;
+	margin: 0;
+	padding: 0;
+	color: #777
+}
+
+.s-wechat .wechat-qrcode .qrcode {
+	width: 105px;
+	margin: 10px auto
+}
+
+.s-wechat .qrcode table {
+	margin: 0 !important
+}
+
+.s-wechat .wechat-qrcode .help p {
+	font-weight: normal;
+	line-height: 16px;
+	padding: 0;
+	margin: 0
+}
+
+.s-wechat .wechat-qrcode:after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	margin-left: -6px;
+	bottom: -13px;
+	width: 0;
+	height: 0;
+	border-width: 8px 6px 6px 6px;
+	border-style: solid;
+	border-color: #fff transparent transparent transparent
+}
+
+.s-wechat:hover .wechat-qrcode {
+	display: block
+}
+
+.s-wechat .wechat-qrcode img {
+	width: auto;
+	height: auto;
+}
+</style>
+<div class="post-share">
+	<ul class="social-share sharehidden">
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'weibo-share', 'width=490,height=700');return false;" class="s-weibo i18n" data-iname="share.weibo" data-iattr="title">
+				<img src="static/picture/weibo.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'qq-share', 'width=730,height=500');return false;" class="s-qq i18n" data-iname="share.qq" data-iattr="title">
+				<img src="static/picture/qq.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:" class="s-wechat">
+				<div class="wechat-qrcode">
+					<h4 class="i18n" data-iname="share.wechat.qcode_title"></h4>
+					<div id="qrcode" class="qrcode" title="http://127.0.0.1:8090/archives/lets-go-07" data-url="http://127.0.0.1:8090/archives/lets-go-07"></div>
+					<div class="help">
+						<p class="i18n" data-iname="share.wechat.help_1"></p>
+						<p class="i18n" data-iname="share.wechat.help_2"></p>
+					</div>
+				</div>
+				<img src="static/picture/wechat.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'douban-share', 'width=490,height=600');return false;" class="s-douban i18n" data-iname="share.douban" data-iattr="title">
+				<img src="static/picture/douban.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'qzone-share', 'width=490,height=600');return false;" class="s-qzone i18n" data-iname="share.qzone" data-iattr="title">
+				<img src="static/picture/qzone.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=600');return false;" class="s-linkedin i18n" data-iname="share.linkedin" data-iattr="title">
+				<img src="static/picture/linkedin.png">
+			</a>
+		</li>
+	</ul>
+	<i class="iconfont show-share icon-forward"></i>
+</div>
+    </footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+<section class="post-squares nextprev">
+		<div class="post-nepre half previous">
+			<a href="lets-go-08.html" rel="prev">
+				<div class="background" style="background-image:url('static/image/gPwDKkpz2qb8fxu.png');"></div>
+				<span class="label i18n" data-iname="post.prev"></span><div class="info"><h3>Let's Go 8 — 结构体与Map</h3><hr></div>
+			</a>
+		</div>
+	<div class="post-nepre half next">
+		<a href="lets-go-06.html" rel="next">
+			<div class="background" style="background-image:url('static/image/gPwDKkpz2qb8fxu.png');"></div>
+			<span class="label i18n" data-iname="post.next"></span><div class="info"><h3>Let's Go 6 — 错误处理</h3><hr></div>
+		</a>
+	</div>
+</section>
+	<section class="author-profile">
+		<div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+			<a href="index.html" class="profile gravatar"><img src="static/picture/avatar.jpg" itemprop="image" alt="Parasomnia" height="70" width="70"></a>
+			<div class="meta">
+				<span class="title">Parasomnia</span>
+				<h3 itemprop="name">
+					<a href="index.html" itemprop="url" rel="author">Parasomnia</a>
+				</h3>						
+			</div>
+		</div>
+		<hr>
+		<p><i class="iconfont icon-pencil"></i>
+			<span> 此 生 无 悔 恋 真 白 ，来 世 愿 入 樱 花 庄 。</span>
+		</p>
+	</section>
+    </main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->
+<!-- 定义可变属性，会根据页面的改变而变化 -->
+<script type='text/javascript'>
+	/* <![CDATA[ */
+    var PageAttr = {
+		"metas": {
+		},
+		"isPost": "true",
+		"postWordCount": "5,708",
+		"postEditTime": "2020-09-21 18:11:20"
+	}
+	/* ]]> */
+</script>
+</div><!-- #page Pjax container-->
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="site-info">
+		<div class="footertext">
+			<p class="foo-logo" style="background-image: url('static/image/sakura.svg');"></p>
+    ねえ、あなたは何になりたいの色？
+    
+		</div>
+		<div class="footer-device">
+			<p style="font-family: 'Ubuntu', sans-serif;">
+				<span>Powered
+ 					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i>
+					by
+					<a rel="me" target="_blank" href="javascript:;" title="一款优秀的开源博客内容发布系统" style="text-decoration:none;">Halo</a>
+				</span>
+				 •
+				<span>Crafted with
+ 					<i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+					by
+					<a rel="me" target="_blank" href="javascript:;" style="text-decoration:none;">LIlGG</a>
+				</span>
+			</p>
+			<p>
+				© 2022 Parasomnia
+			</p>
+		</div>
+	</div><!-- .site-info -->
+</footer><!-- #colophon -->
+<div class="openNav">
+	<div class="iconflat">
+		<div class="icon"></div>
+	</div>
+	<div class="site-branding">
+			<div class="site-title">
+				<a href="index.html">
+					<img src="static/picture/VByUkvYofXhMP2H.png">
+				</a>
+			</div>
+	</div>
+</div><!-- m-nav-bar -->
+</section><!-- #section -->
+<!-- m-nav-center -->
+<div id="mo-nav">
+	<div class="m-avatar">
+		<img src="static/picture/avatar.jpg">
+	</div>
+
+		<p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Shiina Mashiro</p>
+
+		<p style="display:flex; justify-content:center;">
+				<a href="javascript:;" class="social social-twitter" target="_blank"><img src="static/picture/twitter.png" width="18"></a>
+				<a href="javascript:;" class="social social-github" target="_blank"><img src="static/picture/github.png" width="18"></a>
+				<a href="javascript:;" class="social social-bili" target="_blank"><img src="static/picture/bilibili.png" width="18"></a>
+		</p>
+
+	<div class="m-search">
+		<form class="m-search-form" method="get" action="/search" role="search">
+			<input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required="">
+		</form>
+	</div>
+<ul id="menu-menu-1" class="menu">
+				<li>
+				<a href="index.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-fort-awesome faa-tada" aria-hidden="true"></i>
+                        首页
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="archives.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-archive faa-tada" aria-hidden="true"></i>
+                        归档
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="categories.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-folder-open faa-tada" aria-hidden="true"></i>
+                        分类
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="tags.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-tags faa-tada" aria-hidden="true"></i>
+                        标签
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="journals.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-calendar-o  faa-tada" aria-hidden="true"></i>
+                        足迹
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="board.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-pencil faa-tada" aria-hidden="true"></i>
+                        留言
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="links.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-link faa-shake" aria-hidden="true"></i>
+                        友链
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="about.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-leaf faa-tada" aria-hidden="true"></i>
+                        关于
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="javascript:;" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-rss faa-tada" aria-hidden="true"></i>
+                        订阅
+                    </span>
+				</a>
+			</li>
+
+</ul>	<p class="m-footer">© 2022 Parasomnia</p>
+</div><!-- m-nav-center end -->
+<a href="#" class="cd-top"></a>
+<!-- m-cd-top start -->
+<button class="m-cd-top" title="Go to top">
+	<i class="fa fa-chevron-up" aria-hidden="true"></i>
+</button>
+<!-- m-cd-top end -->
+<!-- search start -->
+<form class="js-search search-form search-form--modal" method="get" action="/search" role="search">
+	<div class="search-form__inner">
+		<div>
+			<p class="micro mb-">输入后按回车搜索 ...</p>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" type="search" name="keyword" placeholder="Search" required="">
+		</div>
+	</div>
+	<div class="search_close"></div>
+</form>
+<!-- search end -->
+<!-- aplayer start -->
+<!-- aplayer end -->
+<!-- theme-change start -->
+<div class="changeSkin-gear no-select">
+	<div class="keys">
+        <span id="open-skinMenu">切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i></span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+	<div class="theme-controls row-container">
+		<ul class="menu-list">
+			<li id="bg_0" data-text="默认是纯洁的白色~">
+            	<i class="fa fa-television" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_1" data-text="樱花飞舞~">
+            	<i class="iconfont icon-sakura" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_2" data-text="格子控！">
+            	<i class="fa fa-slack" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_3" data-text="小点点~">
+            	<i class="iconfont icon-dots" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_4" data-text="充满力量的橙色">
+            	<i class="fa fa-optin-monster" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_5" data-text="pixiv主题~">
+            	<i class="iconfont icon-pixiv" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_6" data-text="真白像素风格">
+            	<i class="fa fa-smile-o" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_7" data-text="关灯！">
+            	<i class="fa fa-moon-o" aria-hidden="true"></i>
+          	</li>
+		</ul>
+	</div>
+</div>
+<!-- theme-change end -->
+<!-- 定义全局属性 -->
+<script type='text/javascript'>
+	/* <![CDATA[ */
+	var Poi = {
+		"pjax":"true",
+		"windowheight":"auto",
+		"ajaxurl":"http://127.0.0.1:8090",
+		"resBaseUrl": "http://127.0.0.1:8090/themes/LIlGG_Sakura",
+		"formpostion":"bottom",
+		"toc": "true",
+		"codeLine": "true",
+		"themeChange": "true",
+		"headFocus": "true",
+		"bgvideo": "true",
+		"tagRandomColorMin": "0.999",
+		"tagRandomColorMax": "1",
+		"nickname": "Parasomnia",
+		"sitename": "真白的年轮面包",
+		"themeBase": "http://127.0.0.1:8090/themes/LIlGG_Sakura",
+		"openToast": "true",
+		"toastWidth": 260,
+		"toastHeight": 60,
+		"toastTop": "top",
+		"toastBackground": "#fe9600",
+		"toastColor": "#ffffff",
+		"toastFontSize": 14,
+		"copyMonitor": "true",
+		"copyrightNotice": "true",
+		"photosStyle": "justify",
+		"photosGutter": 10,
+		"tocDepth": 0,
+		"i18n": "auto",
+		"coverNum": "5",
+		"rimageUrl": "https://api.lixingyong.com/api/images",
+		"coverOpen": "",
+		"meEmail": "",
+		"defaultTheme": "bg_0",
+		"defaultGroup": "",
+		"isPostWordCountToast": "",
+		"isPostEditTimeToast": "",
+		"postWordCountToastNormal": "文章篇幅适中，可以放心阅读。",
+		"postWordCountToastMedium": "文章内容较长，请提前准备好咖啡!!!",
+		"postWordCountToastDifficulty": "文章内容很长，建议分段阅读。",
+		"postEditTimeToastNormal": "近期有所更新，请放心阅读！",
+		"postEditTimeToastMedium": "文章距上次编辑时间较远，部分内容可能已经过时！",
+		"postEditTimeToastDifficulty": "文章内容已经很陈旧了，也许不再适用！",
+    "journalLikes": "",
+    "journalComment": "",
+	};
+	var bgConfig = {
+
+		"bg_0": {
+			"id": "0",
+			"name": "white",
+			"desc": "默认是纯洁的白色~",
+			"url": "",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_1": {
+			"id": "1",
+			"name": "sakura",
+			"desc": "樱花飞舞~",
+			"url": "https://view.lixingyong.com/images/2020/07/23/695cc3a80b21ee7f18bd731824ab9638.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_2": {
+			"id": "2",
+			"name": "gribs",
+			"desc": "格子控！",
+			"url": "https://view.lixingyong.com/images/2020/07/23/defc1b6783cd16774900517d3b38ded7.jpg",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_3": {
+			"id": "3",
+			"name": "KAdots",
+			"desc": "小点点~",
+			"url": "https://view.lixingyong.com/images/2020/07/23/kyotoanimation.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_4": {
+			"id": "4",
+			"name": "totem",
+			"desc": "充满力量的橙色",
+			"url": "https://view.lixingyong.com/images/2020/07/23/little-monster.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_5": {
+			"id": "5",
+			"name": "pixiv",
+			"desc": "pixiv主题~",
+			"url": "https://view.lixingyong.com/images/2020/07/23/star02.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_6": {
+			"id": "6",
+			"name": "Mashiro pixel",
+			"desc": "真白像素风格",
+			"url": "https://i.loli.net/2020/09/30/YbVaGTp8UkR4gHP.png",
+			"strategy": "cover",
+			"isNight": ""
+		},
+
+		"bg_7": {
+			"id": "7",
+			"name": "dark",
+			"desc": "关灯！",
+			"url": "",
+			"strategy": "none",
+			"isNight": "true"
+		},
+	};
+	/* ]]> */
+</script>
+<script type='text/javascript' src='static/js/utils.min.js'></script>
+<script type="text/javascript" src="static/js/lazysizes.min.js" async=""></script>
+<script type="text/javascript" src="static/js/lib.js"></script>
+<!-- 相册 -->
+<script src="static/js/jquery.justifiedGallery.min.js" async=""></script>
+<script type="text/javascript" src="static/js/highlight.pack.js" defer=""></script>
+	<script type="text/javascript" src="static/js/highlightjs-line-numbers.min.js" defer=""></script>
+	<script src="static/js/tocbot.min.js" defer=""></script>
+<script src="static/js/sakura-comment.min.js" defer=""></script>
+<script src="static/js/jqcloud.min.js" defer=""></script>
+<script type='text/javascript'>
+	var wordcloud = [
+		{'text': '网络', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/网络'},
+		{'text': '文件系统', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/文件系统'},
+		{'text': '硬件', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/硬件'},
+		{'text': 'oauth2', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/oauth2'},
+		{'text': 'ssh', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/ssh'},
+		{'text': 'python', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/python'},
+		{'text': '中间件', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/中间件'},
+		{'text': 'http', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/http'},
+		{'text': '算法', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/算法'},
+		{'text': 'golang', 'weight': '17', 'link': 'http://127.0.0.1:8090/tags/golang'},
+		{'text': 'android', 'weight': '2', 'link': 'http://127.0.0.1:8090/tags/android'},
+		{'text': '认知', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/认知'},
+		{'text': 'git', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/git'},
+		{'text': 'hard times', 'weight': '6', 'link': 'http://127.0.0.1:8090/tags/hardtime'},
+		{'text': '心理', 'weight': '5', 'link': 'http://127.0.0.1:8090/tags/心理'},
+		{'text': 'java', 'weight': '2', 'link': 'http://127.0.0.1:8090/tags/java'},
+		{'text': '想法', 'weight': '8', 'link': 'http://127.0.0.1:8090/tags/想法'},
+		{'text': '年终总结', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/年终总结'},
+		{'text': '读后感', 'weight': '6', 'link': 'http://127.0.0.1:8090/tags/读后感'},
+		{'text': 'oracle-db', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/oracle-db'},
+		{'text': 'nginx', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/nginx'},
+		{'text': '性能测试', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/性能测试'},
+		{'text': 'linux', 'weight': '5', 'link': 'http://127.0.0.1:8090/tags/linux'},
+		{'text': 'https', 'weight': '2', 'link': 'http://127.0.0.1:8090/tags/https'},
+	]
+</script>
+<script src="static/js/echarts.min.js" async="" defer=""></script>
+<script type='text/javascript'>
+	var categoryRadar = {
+		'闲聊': '23',
+		'极客': '6',
+		'起飞': '9',
+		'技术': '39',
+	}
+</script>
+<script type='text/javascript' src='static/js/qrcode.min.js' defer=""></script>
+<script type='text/javascript' src='static/js/index.js' defer=""></script>
+<script type='text/javascript' src='static/js/i18n.min.js' defer=""></script>
+<script type='text/javascript' src='static/js/app.min.js'></script>
+<div class="site-statistics">
+    
+</div>
+</body>
+</html>

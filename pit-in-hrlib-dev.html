@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title itemprop="name">人才库踩坑记录 - 真白的年轮面包</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="golang">
+
+        <meta name="robots" content="none">
+    <meta name="generator" content="Halo 1.5.4">
+        <link rel="shortcut icon" type="images/x-icon" href="https://i.loli.net/2020/08/21/zYQoZvxB6eclsR5.png">
+    
+        
+	<link rel='stylesheet' href='static/css/style.min.css' type='text/css' media='all'>
+	<link rel="stylesheet" href="static/css/css.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/font_2010950_sh9o0r7ahar.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/lib.css" media="noexist" onload="this.media='all'">
+	<link rel='stylesheet' href="static/css/highlight-Dracula.css" type="text/css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/jqcloud.min.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="static/css/justifiedGallery.min.css" media="noexist" onload="this.media='all'">
+<style type="text/css"> .site-top .lower nav { display: block !important; } /** * 图片资源 */ .video-play, .loadvideo { background-image: url(static/image/play@32x32.png) } .video-pause { background-image: url(static/image/pause@32x32.png) } #video-add { background-image: url(static/image/add@32x32.png); } #loading-comments { background-image: url(static/image/disqus-preloader.svg); } .headertop.filter-grid:before { background-image: url(static/image/grid.png) } .headertop.filter-dot:before { background-image: url(static/image/dot.gif) } @media (max-width:860px) { .headertop.filter-dot:before { background-image: url(static/image/grid.png) } } .search-form.is-visible { background-image: url(static/image/iloli.gif); } #pagination .loading, #journals-pagination .loading { background-image: url(static/image/rotating-ball-o.svg); } #banner_wave_1 { background-image: url(static/image/wave1.png) repeat-x; } #banner_wave_2 { background-image: url(static/image/wave2.png) repeat-x; } /** 鼠标样式 */ a { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/ayuda.cur), auto } a:active { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/work.cur),alias } p { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/texto.cur),auto } body { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/normal.cur),auto; } .cd-top { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/No_Disponible.cur),auto; } .botui-actions-buttons-button { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/No_Disponible.cur),auto; } .button.botui-actions-buttons-button { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/No_Disponible.cur),auto; } .highlight-wrap code { cursor: url(http://127.0.0.1:8090/themes/LIlGG_Sakura/source/cursor/texto.cur),auto } .cd-top { background: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.1.3/img/Sakura/images/scroll.png) no-repeat center; } .author-profile i, .post-like a, .post-share .show-share, .sub-text, .we-info a, span.sitename, .post-more i:hover, #pagination a:hover, .post-content a:hover, .float-content i:hover { color: #fe9600 } .feature i, .feature-title span, .download, .navigator i:hover, .links ul li:before, .ar-time i, span.ar-circle, .object, .comment .comment-reply-link, .siren-checkbox-radio:checked + .siren-checkbox-radioInput:after { background: #fe9600 } ::-webkit-scrollbar-thumb { background: #fe9600 } .download, .navigator i:hover, .link-title, .links ul li:hover, #pagination a:hover, .comment-respond input[type='submit']:hover { border-color: #fe9600 } .entry-content a:hover, .site-info a:hover, .comment h4 a, #comments-navi a.prev, #comments-navi a.next, .comment h4 a:hover, .site-top ul li a:hover, .entry-title a:hover, #archives-temp h3, span.page-numbers.current, .sorry li a:hover, .site-title a:hover, i.iconfont.js-toggle-search.iconsearch:hover, .comment-respond input[type='submit']:hover { color: #fe9600 } #nprogress .bar { background: #fe9600 } #nprogress .peg { box-shadow: 0 0 10px #fe9600, 0 0 5px #fe9600; } #pagination a:hover { border: 1px solid #fe9600; } #pagination a:hover { -webkit-box-shadow: 0 0 4px #fe9600; -moz-box-shadow: 0 0 4px #fe9600; -o-box-shadow: 0 0 4px #fe9600; box-shadow: 0 0 4px #fe9600 } .entry-content a:after { background-color: #fe9600 } .site-top ul li a:after { background-color: #fe9600 } .post-tags a:hover { color: #fe9600 } blockquote:before { color: #fe9600; } blockquote:after { color: #fe9600; } @media (max-width: 860px) { #mo-nav ul li a:hover { color: #fe9600; } } @media (min-width: 860px) { .chip-container { margin-top: -60px;; } } #gallery-filter { text-align: center; } .masonry-gallery .gallery-item { margin-bottom: 10px } /** 日志 */ .journals-line>li:nth-child(odd) .journal-label:after { border-right-color: #e6e6fa; } .at_button { background-color: #e6e6fa; color: #ffffff; } .at_button:hover { background: #f0ffff; color: #ffffff; } .journals-line>li:nth-child(odd) .journal-label { background: linear-gradient(60deg,rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover, url(https://i.loli.net/2021/11/16/ycwC4MGToI5ngHl.jpg) 0% 0% / cover; color: #ffffff; } .journals-line>li .journal-label { background: linear-gradient(60deg,rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover, url(https://i.loli.net/2021/11/16/ycwC4MGToI5ngHl.jpg) 0% 0% / cover; color: #ffffff; } /*黑夜模式控件透明度*/ body.dark .header-info, body.dark .top-social img { color:#fff; background:rgba(0,0,0,0.7); } body.dark .notification, body.dark .the-feature.from_left_and_right .info { background-color: rgba(0,0,0,0.7); } body.dark .skin-menu, body.dark .m-cd-top { background-color:rgba(0,0,0,0.7) !important; } /*黑夜模式图像亮度*/ body.dark img, body.dark .highlight-wrap, body.dark iframe, body.dark .entry-content .aplayer { filter:brightness(0.7); } /*黑夜模式主题色*/ body.dark .ar-time i, body.dark span.ar-circle, body.dark .scrollbar, body.dark .butterBar-message, body.dark .aplayer .aplayer-list ol li:hover { background: #fe9600 !important; } body.dark .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur, body.dark .user-menu-option a:hover , body.dark .menu-list li:hover , body.dark .font-family-controls button:hover , body.dark .openNav .icon, body.dark .openNav .icon:before , body.dark .openNav .icon:after , body.dark .openNav .icon:after , body.dark .site-top ul li a:after { background-color: #fe9600; } body.dark #archives-temp h3, body.dark #moblieGoTop, body.dark #changskin, body.dark .the-feature.from_left_and_right a:hover .info p, body.dark .the-feature.from_left_and_right .info, body.dark .ins-section .ins-search-item:hover, body.dark .ins-section .ins-search-item:hover .ins-slug, body.dark .ins-section .ins-search-item:hover .ins-search-preview, body.dark .ins-section .ins-search-item:hover .iconfont , body.dark .float-content i:hover, body.dark .menhera-container .emoji-item:hover , body.dark .comment-respond .logged-in-as a:hover , body.dark .site-top ul li a:hover , body.dark i.iconfont.js-toggle-search.iconsearch:hover { color: #fe9600; } body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path { fill: #fe9600 } body.dark #moblieGoTop:hover , body.dark #changskin:hover { color: #fe9600; opacity:.8; } body.dark .focusinfo .header-tou img { box-shadow: inset 0 0 10px #fe9600; } </style> <!-- 评论模块独立样式 --> <style id="comment-style" type="text/css" media="noexist"> .halo-comment.dark button, .halo-comment.dark input, .halo-comment.dark select, .halo-comment.dark textarea, .halo-comment.dark i.iconfont.js-toggle-search.iconsearch, .halo-comment.dark .comment-textarea .input-label, .halo-comment.dark #emotion-toggle span, .halo-comment.dark .emotion-box, .halo-comment.dark .emotion-box .motion-container .emoji-item { color: #eee !important; } .halo-comment.dark .body p { color: #bebebe !important; } .halo-comment.dark input[type=color]:focus, .halo-comment.dark input[type=date]:focus, .halo-comment.dark input[type=datetime-local]:focus, .halo-comment.dark input[type=datetime]:focus, .halo-comment.dark input[type=email]:focus, .halo-comment.dark input[type=month]:focus, .halo-comment.dark input[type=number]:focus, .halo-comment.dark input[type=password]:focus, .halo-comment.dark input[type=range]:focus, .halo-comment.dark input[type=search]:focus, .halo-comment.dark input[type=tel]:focus, .halo-comment.dark input[type=text]:focus, .halo-comment.dark input[type=time]:focus, .halo-comment.dark input[type=url]:focus, .halo-comment.dark input[type=week]:focus, .halo-comment.dark textarea:focus { color: #eee !important; background-color: #31363b !important; } .halo-comment.dark .comment .info, .halo-comment.dark .comment .comment-time, .halo-comment.dark .comment-respond .logged-in-as, .halo-comment.dark .notification, .halo-comment.dark .comment-respond .logged-in-as a { color: #9499a8; } /** 说说评论样式 */ .halo-comment.journal { max-height: 600px; overflow: auto; } </style>	<script type="text/javascript">
+		if (!!window.ActiveXObject || "ActiveXObject" in window) {
+			alert('请抛弃万恶的IE系列浏览器吧。');
+		}
+	</script>
+</head>
+<body class="hfeed chinese-font serif">
+<section id="main-container">
+		<div class="headertop filter-dim">
+<figure id="centerbg" class="centerbg" style="background-image: url(
+		static/image/XG5bOgFJek6v2NH.jpg
+	);
+">
+	<div class="focusinfo">
+			<h1 class="center-text glitch" data-text="Shiina Mashiro">Shiina Mashiro</h1>
+		<div class="header-info no-select
+			 info-desc"><p><i class="fa fa-quote-left"></i><span class="desc"> 此 生 无 悔 恋 真 白 ，来 世 愿 入 樱 花 庄 。</span><i class="fa fa-quote-right"></i></p>
+			<div class="top-social_v2">
+			    <li id="bg-pre">
+            		<img class="flipx" src="static/picture/next-b.svg">
+          		</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="social-github i18n" data-iname="icon_alt.github" data-iattr="title">
+						<img src="static/picture/github.png">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="social-bili i18n" data-iname="icon_alt.bili" data-iattr="title">
+						<img src="static/picture/bilibili.png">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="i18n" data-iname="icon_alt.twitter" data-iattr="title">
+						<img src="static/picture/twitter.png">
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" target="_blank" class="i18n" data-iname="icon_alt.stackoverflow" data-iattr="title">
+						<img src="static/picture/stackoverflow.svg">
+					</a>
+				</li>
+
+
+				<li id="bg-next">
+            		<img src="static/picture/next-b.svg">
+          		</li>
+			</div>
+		</div>
+	</div>
+</figure>
+		<!-- 背景视频 -->
+<div id="video-container">
+    <video id="bgvideo" class="video" data-id="" data-server="bilibili" data-url="/sakurasou.flv" width="auto" preload="auto" data-cid="" data-qn="64" data-vtype="0"></video>
+    <div id="video-btn" class="loadvideo videolive"></div>
+    <div id="video-add"></div>
+    <div class="video-stu"></div>
+</div>		<!-- 首页下拉箭头 -->
+			<div class="headertop-down faa-float animated" onclick="headertop_down()">
+				<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+			</div>
+		</div>
+	<div id="page" class="site wrapper">
+<style>
+    /** Post start */
+        /** 文章页面导航栏自动收缩 */
+        .yya:not(.sabit) {
+            top: -100px;
+            transition: all .4s ease;
+        }
+
+        .sabit {
+            transition: all .4s ease;
+        }
+
+        /** 文章页首行缩进 */
+    /** Post end */
+</style>		<header class="site-header  " role="banner">
+			<div class="site-top">
+				<div class="site-branding">
+						<div class="site-title">
+							<a href="index.html">
+								<img src="static/picture/VByUkvYofXhMP2H.png">
+							</a>
+						</div>
+				</div><!-- .site-branding -->
+				<div class="header-user-avatar">
+					<img src="static/picture/avatar.jpg" width="30" height="30">
+					<div class="header-user-menu">
+						<div class="herder-user-name">
+							<div class="herder-user-name-u">Parasomnia</div>
+						</div>
+					</div>
+				</div>
+				<div class="searchbox"><i class="iconfont js-toggle-search iconsearch icon-search"></i></div>
+				<div class="lower-cantiner">
+					<div class="lower">
+						<nav class="navbar">
+<ul id="menu-menu-1" class="menu">
+				<li>
+				<a href="index.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-fort-awesome faa-tada" aria-hidden="true"></i>
+                        首页
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="archives.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-archive faa-tada" aria-hidden="true"></i>
+                        归档
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="categories.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-folder-open faa-tada" aria-hidden="true"></i>
+                        分类
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="tags.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-tags faa-tada" aria-hidden="true"></i>
+                        标签
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="journals.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-calendar-o  faa-tada" aria-hidden="true"></i>
+                        足迹
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="board.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-pencil faa-tada" aria-hidden="true"></i>
+                        留言
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="links.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-link faa-shake" aria-hidden="true"></i>
+                        友链
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="about.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-leaf faa-tada" aria-hidden="true"></i>
+                        关于
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="javascript:;" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-rss faa-tada" aria-hidden="true"></i>
+                        订阅
+                    </span>
+				</a>
+			</li>
+
+</ul>						</nav>
+						<!-- #site-navigation -->
+					</div>
+				</div>
+			</div>
+		</header><!-- #masthead -->
+        <div class="pattern-center-blank"></div>
+        <div class="pattern-center single-center no-select">
+            <div class="pattern-attachment-img">
+                <img class="lazyload" data-src="https://i.loli.net/2020/08/22/gPwDKkpz2qb8fxu.png" src="static/picture/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
+            </div>
+            <header class="pattern-header single-header">
+                <h1 class="entry-title">人才库踩坑记录</h1>
+                <p class="entry-census">
+                    <span>
+                        <a href="index.html">
+                            <img src="static/picture/avatar.jpg">
+                        </a>
+                    </span>
+                    <span>
+                        <a href="index.html">Parasomnia</a>
+                    </span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.time" data-ivalue="2021-04-12"></span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.edit_time" data-ivalue="2021-04-12"></span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.visits" data-ivalue="575"></span>
+                </p>
+            </header>
+        </div>
+		<div id="content" class="site-content">
+<div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+<article id="post-188">
+    <div class="toc-container">
+        <div class="toc"></div>
+    </div>
+    <div class="entry-content">
+        <p>最近一直没更新是因为在开发一个人才库系统，这个项目很简单，本质上就是个只有两张表的增删改查，但是却做了两周，这篇文章就是用来记录这次开发遇到的坑</p>
+<h1 id="程序设计">程序设计</h1>
+<p>整个系统使用的技术也比较简单</p>
+<blockquote>
+<p>前端：baidu-amis<br>
+服务端：golang gin sqlx mysql5.7</p>
+</blockquote>
+<p>任务是按阶段来给的，这个阶段的功能大致就是：</p>
+<blockquote>
+<p>实现一个对 <code>候选人</code> 和 <code>面试记录</code> 的增删改查功能</p>
+</blockquote>
+<h2 id="数据库设计">数据库设计</h2>
+<p>候选人与面试记录是 <code>1:N</code> 的关系，所以数据库的设计也就是两张表：<code>candidate</code> 候选人表 和 <code>feedback</code> 面试反馈表，通过在 <code>feedback</code> 记录中记录所从属的 <code>candidate</code> 记录主键来实现两表之间的关联</p>
+<h2 id="对象设计">对象设计</h2>
+<p>在对象设计这里，我纠结了很久，由于之前写的 <code>java</code>，这是我使用 <code>golang</code> 做的第一个正式项目，把不少之前 <code>java</code> 的编码习惯带了过来，虽然在编码过程中尽力去避免这种情况，最后从成品来看，还是一股子<code>java</code> 味儿……</p>
+<p>一共 3 个 model，分别是：对应 <code>candidate</code> 表的对象 <code>Candidate</code>、对应 <code>feedback</code> 表的对象 <code>Feedback</code> 和用于接收来自页面参数和用于页面展示的对象 <code>Candidateview</code></p>
+<p>三者的对应关系如下：</p>
+<pre><code class="language-goalng">type Feedback struct {
+// feedback properties...
+}
+
+type Candidate struct {
+// candidate properties...
+Feedbacks []Feedback
+}
+
+type CandidateView struct {
+*Candidate
+// params... 页面参数
+// convert types... 转换对象，这个后面说
+}
+</code></pre>
+<p>纠结点：</p>
+<ol>
+<li>话说我在对象、属性命名的时候纠结了好久，这也是浪费了大量时间的原因，应该在一开始就统一命名规则，目前项目内变量和函数命名还未统一，等今后重构的时候再来解决吧……</li>
+<li>关于对象的设计形式，开始的时候我就在想，我是应该面向数据库来设计对象呢，还是面向表单来设计对象呢？最后采取了上面这种融合的形式，对象面向数据库，通过内置对象的形式来组合出表单的对象(也就是 <code>candidateview</code>)</li>
+</ol>
+<h2 id="程序结构设计">程序结构设计</h2>
+<p>做过 <code>java</code> 应该对 <code>controller-service-dao-entity</code> 的层级非常熟悉，这个项目当前也是这样设计的</p>
+<p>下面介绍一下各个层级的分工(命名方式与上面不同，但意思是一样的)</p>
+<ol>
+<li><code>model</code>：参数存储容器，同时提供给 <code>repository</code> 实现增删改查的sql语句</li>
+<li><code>repository</code>：连接数据库，使用 <code>model</code> 提供的 sql 实现增删改查功能</li>
+<li><code>service</code>：从 <code>repository</code> 获取增删改查的结果，将其封装成返回给 <code>api</code> 层的 json 数据</li>
+<li><code>api</code>：从页面接收数据并封装成 <code>CandidateView</code> 对象，传向 <code>service</code> 层</li>
+</ol>
+<p>emm,看完是不是有种 <strong>过度设计</strong> 的感觉？</p>
+<h1 id="对象转换">对象转换</h1>
+<p>因为候选人的年龄是会随着时间发生变化的，所以在数据库中，存储的并不是他们的年龄，而是他们的生日，所以在页面展示时，是需要通过他们的生日计算出年龄用于显示的，所以举一个例子：</p>
+<blockquote>
+<p>在 <code>Candidate</code> 中有一个属性对应候选人的生日，在 <code>repository</code> 中将他的数据查询后并填入 <code>Candidate</code> 对象后，需要使用函数将 <code>Candidate</code> 的<br>
+类型 <code>time.Time</code> 的属性 <code>Birthday</code> 计算得出 <code>CandidateView</code> 中的 <code>int</code> 类型 <code>Age</code> 对象</p>
+</blockquote>
+<p>下面是具体实现</p>
+<pre><code class="language-golang">func (cv *CandidateView) Birthday2Age() {
+	now := time.Now()
+	age := now.Year() - cv.Birthday.Year()
+	if now.Month() &gt; cv.Birthday.Month() || now.Month() == cv.Birthday.Month() &amp;&amp; now.Day() &gt; cv.Birthday.Day() {
+		age++
+	}
+	cv.Age = age
+}
+</code></pre>
+<p>这一步是在 <code>repository</code> 层中将单行数据取出后完成的</p>
+<p>事实上，在项目中这样的对象转换并不止一个</p>
+<p>再比如说 <code>baidu-amis</code> 里的时间控件传回 <code>api</code> 时是时间戳字符串，但是由于 <code>Candidate</code> 中的 <code>Birthday</code> 字段是 <code>time.Time</code> 并不能自动完成赋值（即 <code>gin.ShouldBind</code>），所以有个中间字段 <code>BirthStamp</code></p>
+<p>对象转换函数</p>
+<pre><code class="language-golang">// 将表单时间戳转为生日对象
+func (cv *CandidateView) BirthStamp2Time() {
+	if cv.BirthdayStamp != &quot;&quot; {
+		stamp, _ := strconv.ParseInt(cv.BirthdayStamp, 10, 64)
+		cv.Birthday = time.Unix(stamp, 0)
+	}
+}
+
+// 将db中time.time转时间戳
+func (cv *CandidateView) Time2BirthStamp() {
+	cv.BirthdayStamp = strconv.FormatInt(cv.Birthday.Unix(), 10)
+}
+</code></pre>
+<p>嗯，很不优雅，简直丑爆了……</p>
+<h1 id="事务处理">事务处理</h1>
+<p>除了查询外的操作都应该加上 <code>事务</code>，为了避免有多个 <code>err</code> 写多个 <code>if</code> 和 <code>rollback</code> 的情况出现，我的处理代码如下：</p>
+<pre><code class="language-golang">func Xxx(cv *model.CandidateView) error{
+	var err error
+	tx,_ := db.Beginx()
+	defer tx.Rollback()
+	if err = tx.NamedExec(sql1,cv);err != nil {
+		log.Println(err)
+		return err
+	}
+	if err = tx.NamedExec(sql2,cv);err != nil {
+		log.Println(err)
+		return err
+	}
+	...
+	err = tx.commit()
+	return err
+}
+</code></pre>
+<p>如果你有更好的写法请留言评论~</p>
+<h1 id="数据库连接链接">数据库连接链接</h1>
+<p>从 <code>mysql</code> 中取出的 <code>date</code> 类型字段并不会自动被转换成 <code>time.Time</code> 赋值给对应字段，需要在数据库连接链接后加上一段 <code>?parseTime=true</code></p>
+<p>例如：<code>root:@tcp(127.0.0.1:3306)/db_name?parseTime=true</code></p>
+<h1 id="关于重构">关于重构</h1>
+<p>项目在刚开始就经历了多次重构，如前面所说，就是为了避免项目太 java，可是到了后面还是写的很 java，需要多看看其他的 <code>golang</code> 项目再来改进写法</p>
+<p>至少有一点可以确认的是，Golang 是一门很简洁的语言，能在很短的时间就重构的面目全非，像上面这么设计肯定是过度设计了……</p>
+<p>ps: 以后再做开发要自上而下设计，从功能实现逻辑 到 界面（反正用 amis，界面都差不多的） 到 代码结构设计（把函数名、函数参数、函数返回值写好，函数体里写 TODO）</p>
+
+        <p>Q.E.D. <i class="fa fa-meetup" aria-hidden="true" style="color:#d34836"></i></p>
+    </div><!-- .entry-content -->
+    <div class="single-reward">
+        <div class="reward-open"><span class="i18n" data-iname="post.reward"></span>
+            <div class="reward-main">
+                <ul class="reward-row">
+                        <li class="alipay-code"><img src="https://i.loli.net/2020/08/21/iotaKjFTfAsh6qE.jpg"></li>
+                        <li class="wechat-code"><img src="static/picture/HfcFv3kP18y4TGW.jpg"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="post-footer">
+        <div class="post-license">
+            <a href="javascript:;" target="_blank" rel="nofollow">
+                <i class="fa fa-creative-commons" aria-hidden="true"></i>
+                <span class="i18n" data-iname="post.creative_commons"></span>
+            </a>
+        </div>
+        <div class="post-tags">
+                <i class="iconfont icon-tags"></i>
+                    <a href="golang.html" rel="tag">golang</a>
+        </div>
+<style>
+.s-wechat {
+    position: relative;
+}
+
+.s-wechat .wechat-qrcode {
+	display: none;
+	border: 1px solid #eee;
+	position: absolute;
+	top: -215px;
+	left: -84px;
+	width: 200px;
+	height: 192px;
+	color: #666;
+	font-size: 12px;
+	text-align: center;
+	background-color: #fff;
+	box-shadow: 0 2px 10px #aaa;
+	transition: all 200ms;
+	-webkit-tansition: all 350ms;
+	-moz-transition: all 350ms
+}
+
+.s-wechat .wechat-qrcode.bottom {
+	top: 40px;
+	left: -84px
+}
+
+.s-wechat .wechat-qrcode.bottom:after {
+	display: none
+}
+
+.s-wechat .wechat-qrcode h4 {
+	font-weight: normal;
+	height: 26px;
+	line-height: 26px;
+	font-size: 12px;
+	background-color: #f3f3f3;
+	margin: 0;
+	padding: 0;
+	color: #777
+}
+
+.s-wechat .wechat-qrcode .qrcode {
+	width: 105px;
+	margin: 10px auto
+}
+
+.s-wechat .qrcode table {
+	margin: 0 !important
+}
+
+.s-wechat .wechat-qrcode .help p {
+	font-weight: normal;
+	line-height: 16px;
+	padding: 0;
+	margin: 0
+}
+
+.s-wechat .wechat-qrcode:after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	margin-left: -6px;
+	bottom: -13px;
+	width: 0;
+	height: 0;
+	border-width: 8px 6px 6px 6px;
+	border-style: solid;
+	border-color: #fff transparent transparent transparent
+}
+
+.s-wechat:hover .wechat-qrcode {
+	display: block
+}
+
+.s-wechat .wechat-qrcode img {
+	width: auto;
+	height: auto;
+}
+</style>
+<div class="post-share">
+	<ul class="social-share sharehidden">
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'weibo-share', 'width=490,height=700');return false;" class="s-weibo i18n" data-iname="share.weibo" data-iattr="title">
+				<img src="static/picture/weibo.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'qq-share', 'width=730,height=500');return false;" class="s-qq i18n" data-iname="share.qq" data-iattr="title">
+				<img src="static/picture/qq.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:" class="s-wechat">
+				<div class="wechat-qrcode">
+					<h4 class="i18n" data-iname="share.wechat.qcode_title"></h4>
+					<div id="qrcode" class="qrcode" title="http://127.0.0.1:8090/archives/pit-in-hrlib-dev" data-url="http://127.0.0.1:8090/archives/pit-in-hrlib-dev"></div>
+					<div class="help">
+						<p class="i18n" data-iname="share.wechat.help_1"></p>
+						<p class="i18n" data-iname="share.wechat.help_2"></p>
+					</div>
+				</div>
+				<img src="static/picture/wechat.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'douban-share', 'width=490,height=600');return false;" class="s-douban i18n" data-iname="share.douban" data-iattr="title">
+				<img src="static/picture/douban.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'qzone-share', 'width=490,height=600');return false;" class="s-qzone i18n" data-iname="share.qzone" data-iattr="title">
+				<img src="static/picture/qzone.png">
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=600');return false;" class="s-linkedin i18n" data-iname="share.linkedin" data-iattr="title">
+				<img src="static/picture/linkedin.png">
+			</a>
+		</li>
+	</ul>
+	<i class="iconfont show-share icon-forward"></i>
+</div>
+    </footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+<section class="post-squares nextprev">
+		<div class="post-nepre half previous">
+			<a href="build-personal-boundary.html" rel="prev">
+				<div class="background" style="background-image:url('static/image/YbVaGTp8UkR4gHP.png');"></div>
+				<span class="label i18n" data-iname="post.prev"></span><div class="info"><h3>Build personal boundary</h3><hr></div>
+			</a>
+		</div>
+	<div class="post-nepre half next">
+		<a href="record-of-net-disconnection.html" rel="next">
+			<div class="background" style="background-image:url('static/image/vimtCV42UernF9f.jpg');"></div>
+			<span class="label i18n" data-iname="post.next"></span><div class="info"><h3>关于一次断网事故的记录</h3><hr></div>
+		</a>
+	</div>
+</section>
+	<section class="author-profile">
+		<div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+			<a href="index.html" class="profile gravatar"><img src="static/picture/avatar.jpg" itemprop="image" alt="Parasomnia" height="70" width="70"></a>
+			<div class="meta">
+				<span class="title">Parasomnia</span>
+				<h3 itemprop="name">
+					<a href="index.html" itemprop="url" rel="author">Parasomnia</a>
+				</h3>						
+			</div>
+		</div>
+		<hr>
+		<p><i class="iconfont icon-pencil"></i>
+			<span> 此 生 无 悔 恋 真 白 ，来 世 愿 入 樱 花 庄 。</span>
+		</p>
+	</section>
+    </main><!-- #main -->
+</div><!-- #primary -->
+</div><!-- #content -->
+<!-- 定义可变属性，会根据页面的改变而变化 -->
+<script type='text/javascript'>
+	/* <![CDATA[ */
+    var PageAttr = {
+		"metas": {
+		},
+		"isPost": "true",
+		"postWordCount": "3,278",
+		"postEditTime": "2021-04-12 06:08:18"
+	}
+	/* ]]> */
+</script>
+</div><!-- #page Pjax container-->
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="site-info">
+		<div class="footertext">
+			<p class="foo-logo" style="background-image: url('static/image/sakura.svg');"></p>
+    ねえ、あなたは何になりたいの色？
+    
+		</div>
+		<div class="footer-device">
+			<p style="font-family: 'Ubuntu', sans-serif;">
+				<span>Powered
+ 					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i>
+					by
+					<a rel="me" target="_blank" href="javascript:;" title="一款优秀的开源博客内容发布系统" style="text-decoration:none;">Halo</a>
+				</span>
+				 •
+				<span>Crafted with
+ 					<i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+					by
+					<a rel="me" target="_blank" href="javascript:;" style="text-decoration:none;">LIlGG</a>
+				</span>
+			</p>
+			<p>
+				© 2022 Parasomnia
+			</p>
+		</div>
+	</div><!-- .site-info -->
+</footer><!-- #colophon -->
+<div class="openNav">
+	<div class="iconflat">
+		<div class="icon"></div>
+	</div>
+	<div class="site-branding">
+			<div class="site-title">
+				<a href="index.html">
+					<img src="static/picture/VByUkvYofXhMP2H.png">
+				</a>
+			</div>
+	</div>
+</div><!-- m-nav-bar -->
+</section><!-- #section -->
+<!-- m-nav-center -->
+<div id="mo-nav">
+	<div class="m-avatar">
+		<img src="static/picture/avatar.jpg">
+	</div>
+
+		<p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Shiina Mashiro</p>
+
+		<p style="display:flex; justify-content:center;">
+				<a href="javascript:;" class="social social-twitter" target="_blank"><img src="static/picture/twitter.png" width="18"></a>
+				<a href="javascript:;" class="social social-github" target="_blank"><img src="static/picture/github.png" width="18"></a>
+				<a href="javascript:;" class="social social-bili" target="_blank"><img src="static/picture/bilibili.png" width="18"></a>
+		</p>
+
+	<div class="m-search">
+		<form class="m-search-form" method="get" action="/search" role="search">
+			<input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required="">
+		</form>
+	</div>
+<ul id="menu-menu-1" class="menu">
+				<li>
+				<a href="index.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-fort-awesome faa-tada" aria-hidden="true"></i>
+                        首页
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="archives.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-archive faa-tada" aria-hidden="true"></i>
+                        归档
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="categories.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-folder-open faa-tada" aria-hidden="true"></i>
+                        分类
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="tags.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-tags faa-tada" aria-hidden="true"></i>
+                        标签
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="journals.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-calendar-o  faa-tada" aria-hidden="true"></i>
+                        足迹
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="board.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-pencil faa-tada" aria-hidden="true"></i>
+                        留言
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="links.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-link faa-shake" aria-hidden="true"></i>
+                        友链
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="about.html" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-leaf faa-tada" aria-hidden="true"></i>
+                        关于
+                    </span>
+				</a>
+			</li>
+
+			<li>
+				<a href="javascript:;" target="_self">
+                    <span class="faa-parent animated-hover">
+                            <i class="fa fa-rss faa-tada" aria-hidden="true"></i>
+                        订阅
+                    </span>
+				</a>
+			</li>
+
+</ul>	<p class="m-footer">© 2022 Parasomnia</p>
+</div><!-- m-nav-center end -->
+<a href="#" class="cd-top"></a>
+<!-- m-cd-top start -->
+<button class="m-cd-top" title="Go to top">
+	<i class="fa fa-chevron-up" aria-hidden="true"></i>
+</button>
+<!-- m-cd-top end -->
+<!-- search start -->
+<form class="js-search search-form search-form--modal" method="get" action="/search" role="search">
+	<div class="search-form__inner">
+		<div>
+			<p class="micro mb-">输入后按回车搜索 ...</p>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" type="search" name="keyword" placeholder="Search" required="">
+		</div>
+	</div>
+	<div class="search_close"></div>
+</form>
+<!-- search end -->
+<!-- aplayer start -->
+<!-- aplayer end -->
+<!-- theme-change start -->
+<div class="changeSkin-gear no-select">
+	<div class="keys">
+        <span id="open-skinMenu">切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i></span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+	<div class="theme-controls row-container">
+		<ul class="menu-list">
+			<li id="bg_0" data-text="默认是纯洁的白色~">
+            	<i class="fa fa-television" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_1" data-text="樱花飞舞~">
+            	<i class="iconfont icon-sakura" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_2" data-text="格子控！">
+            	<i class="fa fa-slack" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_3" data-text="小点点~">
+            	<i class="iconfont icon-dots" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_4" data-text="充满力量的橙色">
+            	<i class="fa fa-optin-monster" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_5" data-text="pixiv主题~">
+            	<i class="iconfont icon-pixiv" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_6" data-text="真白像素风格">
+            	<i class="fa fa-smile-o" aria-hidden="true"></i>
+          	</li>
+			<li id="bg_7" data-text="关灯！">
+            	<i class="fa fa-moon-o" aria-hidden="true"></i>
+          	</li>
+		</ul>
+	</div>
+</div>
+<!-- theme-change end -->
+<!-- 定义全局属性 -->
+<script type='text/javascript'>
+	/* <![CDATA[ */
+	var Poi = {
+		"pjax":"true",
+		"windowheight":"auto",
+		"ajaxurl":"http://127.0.0.1:8090",
+		"resBaseUrl": "http://127.0.0.1:8090/themes/LIlGG_Sakura",
+		"formpostion":"bottom",
+		"toc": "true",
+		"codeLine": "true",
+		"themeChange": "true",
+		"headFocus": "true",
+		"bgvideo": "true",
+		"tagRandomColorMin": "0.999",
+		"tagRandomColorMax": "1",
+		"nickname": "Parasomnia",
+		"sitename": "真白的年轮面包",
+		"themeBase": "http://127.0.0.1:8090/themes/LIlGG_Sakura",
+		"openToast": "true",
+		"toastWidth": 260,
+		"toastHeight": 60,
+		"toastTop": "top",
+		"toastBackground": "#fe9600",
+		"toastColor": "#ffffff",
+		"toastFontSize": 14,
+		"copyMonitor": "true",
+		"copyrightNotice": "true",
+		"photosStyle": "justify",
+		"photosGutter": 10,
+		"tocDepth": 0,
+		"i18n": "auto",
+		"coverNum": "5",
+		"rimageUrl": "https://api.lixingyong.com/api/images",
+		"coverOpen": "",
+		"meEmail": "",
+		"defaultTheme": "bg_0",
+		"defaultGroup": "",
+		"isPostWordCountToast": "",
+		"isPostEditTimeToast": "",
+		"postWordCountToastNormal": "文章篇幅适中，可以放心阅读。",
+		"postWordCountToastMedium": "文章内容较长，请提前准备好咖啡!!!",
+		"postWordCountToastDifficulty": "文章内容很长，建议分段阅读。",
+		"postEditTimeToastNormal": "近期有所更新，请放心阅读！",
+		"postEditTimeToastMedium": "文章距上次编辑时间较远，部分内容可能已经过时！",
+		"postEditTimeToastDifficulty": "文章内容已经很陈旧了，也许不再适用！",
+    "journalLikes": "",
+    "journalComment": "",
+	};
+	var bgConfig = {
+
+		"bg_0": {
+			"id": "0",
+			"name": "white",
+			"desc": "默认是纯洁的白色~",
+			"url": "",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_1": {
+			"id": "1",
+			"name": "sakura",
+			"desc": "樱花飞舞~",
+			"url": "https://view.lixingyong.com/images/2020/07/23/695cc3a80b21ee7f18bd731824ab9638.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_2": {
+			"id": "2",
+			"name": "gribs",
+			"desc": "格子控！",
+			"url": "https://view.lixingyong.com/images/2020/07/23/defc1b6783cd16774900517d3b38ded7.jpg",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_3": {
+			"id": "3",
+			"name": "KAdots",
+			"desc": "小点点~",
+			"url": "https://view.lixingyong.com/images/2020/07/23/kyotoanimation.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_4": {
+			"id": "4",
+			"name": "totem",
+			"desc": "充满力量的橙色",
+			"url": "https://view.lixingyong.com/images/2020/07/23/little-monster.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_5": {
+			"id": "5",
+			"name": "pixiv",
+			"desc": "pixiv主题~",
+			"url": "https://view.lixingyong.com/images/2020/07/23/star02.png",
+			"strategy": "none",
+			"isNight": ""
+		},
+
+		"bg_6": {
+			"id": "6",
+			"name": "Mashiro pixel",
+			"desc": "真白像素风格",
+			"url": "static/image/YbVaGTp8UkR4gHP.png",
+			"strategy": "cover",
+			"isNight": ""
+		},
+
+		"bg_7": {
+			"id": "7",
+			"name": "dark",
+			"desc": "关灯！",
+			"url": "",
+			"strategy": "none",
+			"isNight": "true"
+		},
+	};
+	/* ]]> */
+</script>
+<script type='text/javascript' src='static/js/utils.min.js'></script>
+<script type="text/javascript" src="static/js/lazysizes.min.js" async=""></script>
+<script type="text/javascript" src="static/js/lib.js"></script>
+<!-- 相册 -->
+<script src="static/js/jquery.justifiedGallery.min.js" async=""></script>
+<script type="text/javascript" src="static/js/highlight.pack.js" defer=""></script>
+	<script type="text/javascript" src="static/js/highlightjs-line-numbers.min.js" defer=""></script>
+	<script src="static/js/tocbot.min.js" defer=""></script>
+<script src="static/js/sakura-comment.min.js" defer=""></script>
+<script src="static/js/jqcloud.min.js" defer=""></script>
+<script type='text/javascript'>
+	var wordcloud = [
+		{'text': '网络', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/网络'},
+		{'text': '文件系统', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/文件系统'},
+		{'text': '硬件', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/硬件'},
+		{'text': 'oauth2', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/oauth2'},
+		{'text': 'ssh', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/ssh'},
+		{'text': 'python', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/python'},
+		{'text': '中间件', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/中间件'},
+		{'text': 'http', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/http'},
+		{'text': '算法', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/算法'},
+		{'text': 'golang', 'weight': '17', 'link': 'http://127.0.0.1:8090/tags/golang'},
+		{'text': 'android', 'weight': '2', 'link': 'http://127.0.0.1:8090/tags/android'},
+		{'text': '认知', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/认知'},
+		{'text': 'git', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/git'},
+		{'text': 'hard times', 'weight': '6', 'link': 'http://127.0.0.1:8090/tags/hardtime'},
+		{'text': '心理', 'weight': '5', 'link': 'http://127.0.0.1:8090/tags/心理'},
+		{'text': 'java', 'weight': '2', 'link': 'http://127.0.0.1:8090/tags/java'},
+		{'text': '想法', 'weight': '8', 'link': 'http://127.0.0.1:8090/tags/想法'},
+		{'text': '年终总结', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/年终总结'},
+		{'text': '读后感', 'weight': '6', 'link': 'http://127.0.0.1:8090/tags/读后感'},
+		{'text': 'oracle-db', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/oracle-db'},
+		{'text': 'nginx', 'weight': '3', 'link': 'http://127.0.0.1:8090/tags/nginx'},
+		{'text': '性能测试', 'weight': '1', 'link': 'http://127.0.0.1:8090/tags/性能测试'},
+		{'text': 'linux', 'weight': '5', 'link': 'http://127.0.0.1:8090/tags/linux'},
+		{'text': 'https', 'weight': '2', 'link': 'http://127.0.0.1:8090/tags/https'},
+	]
+</script>
+<script src="static/js/echarts.min.js" async="" defer=""></script>
+<script type='text/javascript'>
+	var categoryRadar = {
+		'闲聊': '23',
+		'极客': '6',
+		'起飞': '9',
+		'技术': '39',
+	}
+</script>
+<script type='text/javascript' src='static/js/qrcode.min.js' defer=""></script>
+<script type='text/javascript' src='static/js/index.js' defer=""></script>
+<script type='text/javascript' src='static/js/i18n.min.js' defer=""></script>
+<script type='text/javascript' src='static/js/app.min.js'></script>
+<div class="site-statistics">
+    
+</div>
+</body>
+</html>
